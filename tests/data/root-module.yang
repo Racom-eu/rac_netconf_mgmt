@@ -1,0 +1,20 @@
+module root-module {
+    yang-version 1.1;
+    namespace "urn:test:root";
+    prefix root;
+
+    import dep-module {
+        prefix dep;
+        revision-date 2024-01-01;
+    }
+
+    revision 2024-01-01 {
+        description "Root module that imports dep-module.";
+    }
+
+    container settings {
+        leaf name {
+            type dep:my-string;
+        }
+    }
+}

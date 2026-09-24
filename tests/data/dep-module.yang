@@ -1,0 +1,13 @@
+module dep-module {
+    yang-version 1.1;
+    namespace "urn:test:dep";
+    prefix dep;
+
+    revision 2024-01-01 {
+        description "Dependency module for unit tests.";
+    }
+
+    typedef my-string {
+        type string;
+    }
+}

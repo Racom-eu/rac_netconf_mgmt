@@ -1,0 +1,7 @@
+<config_data xmlns="eu:racom:mbm:root">
+    <main>
+        <Main>
+            <RR_StationName>TestStation1</RR_StationName>
+        </Main>
+    </main>
+</config_data>

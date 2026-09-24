@@ -1,0 +1,165 @@
+[tool.poetry]
+name = "rr_netconf_mgmt"
+version = "0.1.0"
+description = "NETCONF management library"
+authors = ["RACOM s.r.o. <sw_vyvoj@racom.eu>"]
+readme = "README.md"
+license = "Apache-2.0"
+packages = [{ include = "rr_netconf_mgmt", from = "src" }]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+ncclient = { version = "^0.7.1", extras = ["libssh"] }
+libyang = "4.0.0"
+cffi = "1.16.0"
+lxml = "*"
+
+[tool.poetry.dev-dependencies]
+pytest = "^9.0.3"
+pytest-custom-exit-code = "^0.3.0"
+ruff = "^0.15.11"
+pyright = { version = "^1.1.408", extras = ["nodejs"] }
+pylint = "^4.0.5"
+
+[tool.ruff]
+
+exclude = ["examples"]
+
+# The line length.
+line-length = 120
+
+# The style in which violation messages should be formatted.
+output-format = "full"
+
+# Mark the specified directories as namespace packages.
+# For the purpose of module resolution, Ruff will treat those directories
+# and all their subdirectories as if they contained an `__init__.py` file.
+namespace-packages = []
+
+[tool.ruff.lint]
+
+# A list of rule codes or prefixes to enable.
+# Prefixes can specify exact rules (like `F841`), entire categories (like `F`),
+# or anything in between.
+select = [
+    "ANN",
+    "ASYNC",
+    "S102",
+    "S104",
+    "S105",
+    "S106",
+    "S107",
+    "S108",
+    "S110",
+    "S112",
+    "S113",
+    "S306",
+    "BLE",
+    "FBT",
+    "B",
+    "A",
+    "C4",
+    "DTZ",
+    "T10",
+    "EM",
+    "EXE",
+    "FIX",
+    "INT",
+    "ICN",
+    "LOG",
+    "G",
+    "INP",
+    "PIE",
+    "T20",
+    "PT",
+    "RSE",
+    "RET",
+    "SLF",
+    "SIM",
+    "I",
+    "C90",
+    "N",
+    "PERF",
+    "E",
+    "W",
+    "F",
+    "PGH",
+    "UP",
+    "FURB",
+    "RUF",
+    "TRY",
+]
+
+# A list of rule codes or prefixes to ignore.
+ignore = [
+    "ANN002",
+    "ANN003",
+    "TRY003",
+    "EM101",
+    "EM102",
+    "FBT001",
+    "FBT002",
+    "ANN401",
+]
+
+# A list of mappings from file pattern to rule codes or prefixes to exclude,
+# when considering any matching files. An initial '!' negates the file pattern.
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*" = [
+    "S110",
+    "S112",
+    "BLE",
+    "EM",
+    "T20",
+    "ANN201",
+    "ANN202",
+    "ANN204",
+    "ANN001",
+    "SLF001",
+]
+"!tests/**/*" = ["PT"]
+
+[tool.pyright]
+
+# Default rule set to use.
+# Possible values: ["off", "basic", "standard", "strict"]
+typeCheckingMode = "standard"
+
+# Paths of directories or files that should be considered part of the project.
+include = ["src", "tests"]
+# Paths of directories or files that should not be considered part of the project.
+exclude = ["**/__pycache__"]
+
+# Check Rule Overrides.
+reportConstantRedefinition = "error"
+reportDeprecated = "error"
+reportDuplicateImport = "error"
+reportIncompleteStub = "error"
+reportInconsistentConstructor = "error"
+reportInvalidStubStatement = "error"
+reportMatchNotExhaustive = "error"
+reportMissingParameterType = "error"
+reportMissingTypeArgument = "error"
+reportPrivateUsage = "error"
+reportTypeCommentUsage = "error"
+reportUnknownArgumentType = "error"
+reportUnknownLambdaType = "error"
+reportUnknownMemberType = "error"
+reportUnknownParameterType = "error"
+reportUnnecessaryCast = "error"
+reportUnnecessaryComparison = "error"
+reportUnnecessaryContains = "error"
+reportUnnecessaryIsInstance = "error"
+reportUnusedClass = "error"
+reportUnusedImport = "error"
+reportUnusedFunction = "error"
+reportUnusedVariable = "error"
+reportUntypedBaseClass = "error"
+
+[[tool.pyright.executionEnvironments]]
+root = "tests"
+reportPrivateUsage = "none"
